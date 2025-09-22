@@ -11,9 +11,10 @@ import { useToast } from '../hooks/use-toast';
 import { Moon, Sun, Eye, EyeOff } from 'lucide-react';
 
 const Auth = () => {
-  const { login, register } = useAuth();
+  const { login, register, user } = useAuth();
   const { theme, toggleTheme } = useTheme();
   const { toast } = useToast();
+  const navigate = useNavigate();
   
   const [showPassword, setShowPassword] = useState(false);
   const [loginData, setLoginData] = useState({ email: 'demo@icare.com', password: 'demo123' });
