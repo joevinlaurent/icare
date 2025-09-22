@@ -1,0 +1,134 @@
+{
+  "summary": {
+    "passed": 8,
+    "failed": 2,
+    "total": 10,
+    "success_rate": 80.0
+  },
+  "results": [
+    {
+      "test": "Health Check",
+      "success": true,
+      "details": "API is running - iCare API is running",
+      "response_data": {
+        "message": "iCare API is running",
+        "version": "1.0.0"
+      },
+      "timestamp": "2025-09-22T18:54:17.214096"
+    },
+    {
+      "test": "User Registration",
+      "success": false,
+      "details": "HTTP 500: Internal Server Error",
+      "response_data": null,
+      "timestamp": "2025-09-22T18:54:17.482551"
+    },
+    {
+      "test": "User Login",
+      "success": true,
+      "details": "Login successful - User: Marie Dubois",
+      "response_data": {
+        "success": true,
+        "user": {
+          "id": "68d19b59f2ba7cc9a00a4ab9",
+          "name": "Marie Dubois",
+          "email": "testuser_b8028949@example.com",
+          "avatar": null,
+          "bio": "Reprendre le contr\u00f4le de mon temps sur les r\u00e9seaux sociaux \ud83c\udfaf",
+          "subscription": "free",
+          "time_saved": 0,
+          "referral_code": "5A8DDCCE",
+          "created_at": "2025-09-22T18:54:17.478000"
+        },
+        "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2OGQxOWI1OWYyYmE3Y2M5YTAwYTRhYjkiLCJleHAiOjE3NTg2NTM2NTd9.5_aiMFC6rZ9SKAsvQXyelPF7zn_CxN9lz4y_q7w7ejY",
+        "message": null
+      },
+      "timestamp": "2025-09-22T18:54:17.725638"
+    },
+    {
+      "test": "Get Current User",
+      "success": true,
+      "details": "User info retrieved - Name: Marie Dubois",
+      "response_data": {
+        "id": "68d19b59f2ba7cc9a00a4ab9",
+        "name": "Marie Dubois",
+        "email": "testuser_b8028949@example.com",
+        "avatar": null,
+        "bio": "Reprendre le contr\u00f4le de mon temps sur les r\u00e9seaux sociaux \ud83c\udfaf",
+        "subscription": "free",
+        "time_saved": 0,
+        "referral_code": "5A8DDCCE",
+        "created_at": "2025-09-22T18:54:17.478000"
+      },
+      "timestamp": "2025-09-22T18:54:17.743878"
+    },
+    {
+      "test": "Get User Preferences",
+      "success": true,
+      "details": "Preferences retrieved - Hide reels: True",
+      "response_data": {
+        "hide_reels": true,
+        "hide_stories": false,
+        "hide_suggestions": true,
+        "lock_mode": false,
+        "lock_end_time": null
+      },
+      "timestamp": "2025-09-22T18:54:17.753496"
+    },
+    {
+      "test": "Update User Preferences",
+      "success": true,
+      "details": "Preferences updated successfully",
+      "response_data": {
+        "hide_reels": false,
+        "hide_stories": true,
+        "hide_suggestions": false,
+        "lock_mode": false,
+        "lock_end_time": null
+      },
+      "timestamp": "2025-09-22T18:54:17.805129"
+    },
+    {
+      "test": "Add Time Saved",
+      "success": true,
+      "details": "Time saved added - Total: 15 minutes",
+      "response_data": {
+        "success": true,
+        "total_time_saved": 15
+      },
+      "timestamp": "2025-09-22T18:54:17.814426"
+    },
+    {
+      "test": "Get User Stats",
+      "success": true,
+      "details": "Stats retrieved - Time saved: 15 min",
+      "response_data": {
+        "time_saved": 15,
+        "sessions_count": 1,
+        "weekly_time_saved": 15,
+        "total_sessions": 1
+      },
+      "timestamp": "2025-09-22T18:54:17.864497"
+    },
+    {
+      "test": "Unauthorized Access",
+      "success": false,
+      "details": "Should have returned 401, got no response",
+      "response_data": null,
+      "timestamp": "2025-09-22T18:54:17.870898"
+    },
+    {
+      "test": "Invalid Login",
+      "success": true,
+      "details": "Correctly rejected invalid login: Email ou mot de passe incorrect",
+      "response_data": {
+        "success": false,
+        "user": null,
+        "token": null,
+        "message": "Email ou mot de passe incorrect"
+      },
+      "timestamp": "2025-09-22T18:54:17.878094"
+    }
+  ],
+  "timestamp": "2025-09-22T18:54:17.878298"
+}
