@@ -24,7 +24,7 @@ import {
 
 const Profile = () => {
   const { user, logout } = useAuth();
-  const { timeSaved } = useUser();
+  const { timeSaved, stats } = useUser();
   const { toast } = useToast();
   const [showReferralDialog, setShowReferralDialog] = useState(false);
 
@@ -41,7 +41,7 @@ const Profile = () => {
   };
 
   const copyReferralCode = () => {
-    navigator.clipboard.writeText(user?.referralCode || 'DEMO2024');
+    navigator.clipboard.writeText(user?.referral_code || user?.referralCode || 'DEMO2024');
     toast({
       title: "Code copié !",
       description: "Partage-le avec tes amis pour gagner du temps bonus"
@@ -52,7 +52,7 @@ const Profile = () => {
     if (navigator.share) {
       navigator.share({
         title: 'iCare - Reprends le contrôle !',
-        text: `J'ai économisé ${formatTime(timeSaved)} grâce à iCare ! Rejoins-moi avec le code ${user?.referralCode}`,
+        text: `J'ai économisé ${formatTime(timeSaved)} grâce à iCare ! Rejoins-moi avec le code ${user?.referral_code || user?.referralCode}`,
         url: window.location.origin
       });
     } else {
@@ -78,6 +78,15 @@ const Profile = () => {
         Gratuit
       </Badge>
     );
+  };
+
+  const getDaysActive = () => {
+    if (!user?.created_at && !user?.createdAt) return 1;
+    const createdDate = new Date(user.created_at || user.createdAt);
+    const today = new Date();
+    const diffTime = Math.abs(today - createdDate);
+    const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+    return diffDays || 1;
   };
 
   return (
@@ -107,10 +116,7 @@ const Profile = () => {
                 <p className="text-sm text-muted-foreground">Temps récupéré</p>
               </div>
               <div className="text-center">
-                <p className="text-2xl font-bold text-blue-600">
-                  {new Date(user?.createdAt).toLocaleDateString() === new Date().toLocaleDateString() ? '1' : 
-                   Math.floor((new Date() - new Date(user?.createdAt)) / (1000 * 60 * 60 * 24)) + 1}
-                </p>
+                <p className="text-2xl font-bold text-blue-600">{getDaysActive()}</p>
                 <p className="text-sm text-muted-foreground">Jours actif</p>
               </div>
             </div>
@@ -124,7 +130,7 @@ const Profile = () => {
               <div className="bg-emerald-100 dark:bg-emerald-900/30 w-12 h-12 rounded-full flex items-center justify-center mx-auto mb-2">
                 <TrendingUp className="w-6 h-6 text-emerald-600" />
               </div>
-              <p className="text-lg font-bold text-emerald-600">+{Math.floor(timeSaved * 0.15)}min</p>
+              <p className="text-lg font-bold text-emerald-600">+{stats.weekly_time_saved || Math.floor(timeSaved * 0.15)}min</p>
               <p className="text-xs text-muted-foreground">Cette semaine</p>
             </CardContent>
           </Card>
@@ -134,7 +140,7 @@ const Profile = () => {
               <div className="bg-blue-100 dark:bg-blue-900/30 w-12 h-12 rounded-full flex items-center justify-center mx-auto mb-2">
                 <Shield className="w-6 h-6 text-blue-600" />
               </div>
-              <p className="text-lg font-bold text-blue-600">{Math.floor(timeSaved / 15)}</p>
+              <p className="text-lg font-bold text-blue-600">{stats.total_sessions || Math.floor(timeSaved / 15)}</p>
               <p className="text-xs text-muted-foreground">Sessions protégées</p>
             </CardContent>
           </Card>
@@ -163,7 +169,7 @@ const Profile = () => {
                   <div className="flex space-x-2 mt-1">
                     <Input
                       id="referral-code"
-                      value={user?.referralCode || 'DEMO2024'}
+                      value={user?.referral_code || user?.referralCode || 'DEMO2024'}
                       readOnly
                       className="flex-1"
                     />
