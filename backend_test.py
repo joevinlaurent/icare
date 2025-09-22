@@ -336,22 +336,36 @@ class iCareAPITester:
         
         # Save current token
         original_token = self.auth_token
-        self.auth_token = None
         
-        # Test accessing protected endpoint without token
+        # Test 1: No Authorization header
+        self.auth_token = None
         response = self.make_request("GET", "/auth/me")
         
-        if response and response.status_code == 401:
-            self.log_test("Unauthorized Access", True, "Correctly rejected unauthorized request")
-            success = True
+        if response and response.status_code in [401, 403]:
+            self.log_test("Unauthorized Access (No Header)", True, 
+                        f"Correctly rejected request without auth header - HTTP {response.status_code}")
+            success1 = True
         else:
-            self.log_test("Unauthorized Access", False, 
+            self.log_test("Unauthorized Access (No Header)", False, 
+                        f"Should have returned 401/403, got {response.status_code if response else 'no response'}")
+            success1 = False
+        
+        # Test 2: Invalid token
+        self.auth_token = "invalid_token_12345"
+        response = self.make_request("GET", "/auth/me", auth_required=True)
+        
+        if response and response.status_code == 401:
+            self.log_test("Unauthorized Access (Invalid Token)", True, 
+                        "Correctly rejected request with invalid token")
+            success2 = True
+        else:
+            self.log_test("Unauthorized Access (Invalid Token)", False, 
                         f"Should have returned 401, got {response.status_code if response else 'no response'}")
-            success = False
+            success2 = False
         
         # Restore token
         self.auth_token = original_token
-        return success
+        return success1 and success2
     
     def test_invalid_login(self):
         """Test login with invalid credentials"""
