@@ -335,37 +335,37 @@ class iCareAPITester:
         """Test unauthorized access to protected endpoints"""
         print("\n=== Testing Unauthorized Access ===")
         
-        # Save current token
-        original_token = self.auth_token
-        
         # Test 1: No Authorization header
-        self.auth_token = None
-        response = self.make_request("GET", "/auth/me")
-        
-        if response and response.status_code in [401, 403]:
-            self.log_test("Unauthorized Access (No Header)", True, 
-                        f"Correctly rejected request without auth header - HTTP {response.status_code}")
-            success1 = True
-        else:
-            self.log_test("Unauthorized Access (No Header)", False, 
-                        f"Should have returned 401/403, got {response.status_code if response else 'no response'}")
+        try:
+            response = requests.get(f"{self.base_url}/auth/me", timeout=10)
+            if response.status_code in [401, 403]:
+                self.log_test("Unauthorized Access (No Header)", True, 
+                            f"Correctly rejected request without auth header - HTTP {response.status_code}")
+                success1 = True
+            else:
+                self.log_test("Unauthorized Access (No Header)", False, 
+                            f"Should have returned 401/403, got {response.status_code}")
+                success1 = False
+        except Exception as e:
+            self.log_test("Unauthorized Access (No Header)", False, f"Request failed: {e}")
             success1 = False
         
         # Test 2: Invalid token
-        self.auth_token = "invalid_token_12345"
-        response = self.make_request("GET", "/auth/me", auth_required=True)
-        
-        if response and response.status_code == 401:
-            self.log_test("Unauthorized Access (Invalid Token)", True, 
-                        "Correctly rejected request with invalid token")
-            success2 = True
-        else:
-            self.log_test("Unauthorized Access (Invalid Token)", False, 
-                        f"Should have returned 401, got {response.status_code if response else 'no response'}")
+        try:
+            headers = {"Authorization": "Bearer invalid_token_12345"}
+            response = requests.get(f"{self.base_url}/auth/me", headers=headers, timeout=10)
+            if response.status_code == 401:
+                self.log_test("Unauthorized Access (Invalid Token)", True, 
+                            "Correctly rejected request with invalid token")
+                success2 = True
+            else:
+                self.log_test("Unauthorized Access (Invalid Token)", False, 
+                            f"Should have returned 401, got {response.status_code}")
+                success2 = False
+        except Exception as e:
+            self.log_test("Unauthorized Access (Invalid Token)", False, f"Request failed: {e}")
             success2 = False
         
-        # Restore token
-        self.auth_token = original_token
         return success1 and success2
     
     def test_invalid_login(self):
