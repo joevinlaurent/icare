@@ -5,6 +5,7 @@ import { socialNetworks } from '../utils/mockData';
 import { Button } from '../components/ui/button';
 import { Card, CardContent } from '../components/ui/card';
 import { ArrowLeft, ExternalLink, Shield, Clock, Zap } from 'lucide-react';
+import InstagramSimulator from '../components/InstagramSimulator';
 
 const SocialView = () => {
   const { platform } = useParams();
@@ -49,7 +50,7 @@ const SocialView = () => {
   return (
     <div className="min-h-screen bg-background flex flex-col">
       {/* Header */}
-      <div className="bg-card border-b border-border p-4 flex items-center justify-between">
+      <div className="bg-card border-b border-border p-4 flex items-center justify-between relative z-20">
         <div className="flex items-center space-x-3">
           <Button 
             variant="ghost" 
@@ -70,18 +71,11 @@ const SocialView = () => {
             <Clock size={14} />
             <span>{formatTime(timeSpent)}</span>
           </div>
-          <Button 
-            variant="outline" 
-            size="sm"
-            onClick={() => window.open(network.url, '_blank')}
-          >
-            <ExternalLink size={16} />
-          </Button>
         </div>
       </div>
 
       {/* Active Protections */}
-      <div className="p-4 bg-emerald-50 dark:bg-emerald-950/20 border-b">
+      <div className="p-4 bg-emerald-50 dark:bg-emerald-950/20 border-b relative z-10">
         <div className="flex items-center space-x-2 mb-2">
           <Shield className="w-4 h-4 text-emerald-600" />
           <span className="text-sm font-medium text-emerald-800 dark:text-emerald-200">
@@ -107,17 +101,12 @@ const SocialView = () => {
         </div>
       </div>
 
-      {/* WebView Simulation */}
+      {/* Instagram Simulator */}
       <div className="flex-1 relative">
-        <iframe
-          src={network.url}
-          className="w-full h-full border-none"
-          title={network.name}
-          sandbox="allow-scripts allow-same-origin allow-forms allow-popups"
-        />
+        <InstagramSimulator onTimeSpent={() => {}} />
         
-        {/* Overlay for script injection simulation */}
-        <div className="absolute top-4 right-4 bg-black/80 text-white px-3 py-2 rounded-lg text-sm">
+        {/* Overlay for iCare indicator */}
+        <div className="absolute top-4 right-4 bg-black/80 text-white px-3 py-2 rounded-lg text-sm z-30">
           <div className="flex items-center space-x-2">
             <Zap className="w-4 h-4 text-yellow-400" />
             <span>iCare actif</span>
@@ -126,7 +115,7 @@ const SocialView = () => {
       </div>
 
       {/* Bottom Stats */}
-      <div className="p-4 bg-card border-t border-border">
+      <div className="p-4 bg-card border-t border-border relative z-20">
         <div className="flex items-center justify-between text-sm">
           <div className="flex items-center space-x-4">
             <div className="text-center">
