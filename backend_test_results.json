@@ -14,29 +14,29 @@
         "message": "iCare API is running",
         "version": "1.0.0"
       },
-      "timestamp": "2025-09-22T18:54:52.503746"
+      "timestamp": "2025-09-22T18:55:29.669902"
     },
     {
       "test": "User Registration",
       "success": true,
-      "details": "User registered successfully - ID: 68d19b7c867876dc72077a35",
+      "details": "User registered successfully - ID: 68d19ba1867876dc72077a38",
       "response_data": {
         "success": true,
         "user": {
-          "id": "68d19b7c867876dc72077a35",
+          "id": "68d19ba1867876dc72077a38",
           "name": "Marie Dubois",
-          "email": "testuser_922747c2@example.com",
+          "email": "testuser_0649485b@example.com",
           "avatar": null,
           "bio": "Reprendre le contr\u00f4le de mon temps sur les r\u00e9seaux sociaux \ud83c\udfaf",
           "subscription": "free",
           "time_saved": 0,
-          "referral_code": "72C8476B",
-          "created_at": "2025-09-22T18:54:52.770975"
+          "referral_code": "4D22B46B",
+          "created_at": "2025-09-22T18:55:29.914849"
         },
-        "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2OGQxOWI3Yzg2Nzg3NmRjNzIwNzdhMzUiLCJleHAiOjE3NTg2NTM2OTJ9.F3EUkv0HiXA6iY600uE47IVhuTeaZyqZxElrVEBNCJ8",
+        "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2OGQxOWJhMTg2Nzg3NmRjNzIwNzdhMzgiLCJleHAiOjE3NTg2NTM3Mjl9.DuG658MXzcqVAxKDefoXj8sGrqN3U8xWXRKFeOXNUhc",
         "message": null
       },
-      "timestamp": "2025-09-22T18:54:52.780580"
+      "timestamp": "2025-09-22T18:55:29.921201"
     },
     {
       "test": "User Login",
@@ -45,37 +45,37 @@
       "response_data": {
         "success": true,
         "user": {
-          "id": "68d19b7c867876dc72077a35",
+          "id": "68d19ba1867876dc72077a38",
           "name": "Marie Dubois",
-          "email": "testuser_922747c2@example.com",
+          "email": "testuser_0649485b@example.com",
           "avatar": null,
           "bio": "Reprendre le contr\u00f4le de mon temps sur les r\u00e9seaux sociaux \ud83c\udfaf",
           "subscription": "free",
           "time_saved": 0,
-          "referral_code": "72C8476B",
-          "created_at": "2025-09-22T18:54:52.770000"
+          "referral_code": "4D22B46B",
+          "created_at": "2025-09-22T18:55:29.914000"
         },
-        "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2OGQxOWI3Yzg2Nzg3NmRjNzIwNzdhMzUiLCJleHAiOjE3NTg2NTM2OTN9.WS7r4j0Lxgn_WAuKLgMLsCbaZGDDNVR0ZG6bxy6sYIA",
+        "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2OGQxOWJhMTg2Nzg3NmRjNzIwNzdhMzgiLCJleHAiOjE3NTg2NTM3MzB9.FUNWp7zqHeXP5hUwgW3CxsuRIOxZ095QZMl0sLleIho",
         "message": null
       },
-      "timestamp": "2025-09-22T18:54:53.026550"
+      "timestamp": "2025-09-22T18:55:30.205796"
     },
     {
       "test": "Get Current User",
       "success": true,
       "details": "User info retrieved - Name: Marie Dubois",
       "response_data": {
-        "id": "68d19b7c867876dc72077a35",
+        "id": "68d19ba1867876dc72077a38",
         "name": "Marie Dubois",
-        "email": "testuser_922747c2@example.com",
+        "email": "testuser_0649485b@example.com",
         "avatar": null,
         "bio": "Reprendre le contr\u00f4le de mon temps sur les r\u00e9seaux sociaux \ud83c\udfaf",
         "subscription": "free",
         "time_saved": 0,
-        "referral_code": "72C8476B",
-        "created_at": "2025-09-22T18:54:52.770000"
+        "referral_code": "4D22B46B",
+        "created_at": "2025-09-22T18:55:29.914000"
       },
-      "timestamp": "2025-09-22T18:54:53.048720"
+      "timestamp": "2025-09-22T18:55:30.218329"
     },
     {
       "test": "Get User Preferences",
@@ -88,7 +88,7 @@
         "lock_mode": false,
         "lock_end_time": null
       },
-      "timestamp": "2025-09-22T18:54:53.103943"
+      "timestamp": "2025-09-22T18:55:30.268426"
     },
     {
       "test": "Update User Preferences",
@@ -101,7 +101,7 @@
         "lock_mode": false,
         "lock_end_time": null
       },
-      "timestamp": "2025-09-22T18:54:53.116148"
+      "timestamp": "2025-09-22T18:55:30.281496"
     },
     {
       "test": "Add Time Saved",
@@ -111,7 +111,7 @@
         "success": true,
         "total_time_saved": 15
       },
-      "timestamp": "2025-09-22T18:54:53.172600"
+      "timestamp": "2025-09-22T18:55:30.292729"
     },
     {
       "test": "Get User Stats",
@@ -123,14 +123,21 @@
         "weekly_time_saved": 15,
         "total_sessions": 1
       },
-      "timestamp": "2025-09-22T18:54:53.225831"
+      "timestamp": "2025-09-22T18:55:30.304533"
     },
     {
-      "test": "Unauthorized Access",
+      "test": "Unauthorized Access (No Header)",
+      "success": false,
+      "details": "Should have returned 401/403, got no response",
+      "response_data": null,
+      "timestamp": "2025-09-22T18:55:30.312500"
+    },
+    {
+      "test": "Unauthorized Access (Invalid Token)",
       "success": false,
       "details": "Should have returned 401, got no response",
       "response_data": null,
-      "timestamp": "2025-09-22T18:54:53.234936"
+      "timestamp": "2025-09-22T18:55:30.361480"
     },
     {
       "test": "Invalid Login",
@@ -142,8 +149,8 @@
         "token": null,
         "message": "Email ou mot de passe incorrect"
       },
-      "timestamp": "2025-09-22T18:54:53.286203"
+      "timestamp": "2025-09-22T18:55:30.372457"
     }
   ],
-  "timestamp": "2025-09-22T18:54:53.286411"
+  "timestamp": "2025-09-22T18:55:30.372676"
 }
