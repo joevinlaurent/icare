@@ -182,10 +182,10 @@ const Auth = () => {
                 </form>
                 
                 <div className="mt-4 p-3 bg-muted/50 rounded-lg">
-                  <p className="text-sm font-medium mb-2">🎯 Compte de démonstration :</p>
+                  <p className="text-sm font-medium mb-2">🎯 Compte de test :</p>
                   <p className="text-xs text-muted-foreground">
-                    Email: demo@icare.com<br />
-                    Mot de passe: demo123
+                    Créez un nouveau compte ou utilisez :<br />
+                    Email: demo@icare.com / Mot de passe: demo123
                   </p>
                 </div>
               </CardContent>
