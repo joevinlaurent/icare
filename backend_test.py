@@ -41,10 +41,11 @@ class iCareAPITester:
         url = f"{self.base_url}{endpoint}"
         
         # Add auth header if required
-        if auth_required and self.auth_token:
+        if auth_required:
             if headers is None:
                 headers = {}
-            headers["Authorization"] = f"Bearer {self.auth_token}"
+            if self.auth_token:
+                headers["Authorization"] = f"Bearer {self.auth_token}"
         
         try:
             if method.upper() == "GET":
