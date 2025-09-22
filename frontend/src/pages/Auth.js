@@ -26,6 +26,13 @@ const Auth = () => {
   });
   const [loading, setLoading] = useState(false);
 
+  // Redirect if user is already logged in
+  useEffect(() => {
+    if (user) {
+      navigate('/', { replace: true });
+    }
+  }, [user, navigate]);
+
   const handleLogin = async (e) => {
     e.preventDefault();
     setLoading(true);
