@@ -101,3 +101,149 @@
 #====================================================================================================
 # Testing Data - Main Agent and testing sub agent both should log testing data below this section
 #====================================================================================================
+
+user_problem_statement: "Test backend API endpoints for iCare application with FastAPI + MongoDB + JWT Auth"
+
+backend:
+  - task: "Health Check API"
+    implemented: true
+    working: true
+    file: "backend/server.py"
+    stuck_count: 0
+    priority: "high"
+    needs_retesting: false
+    status_history:
+      - working: true
+        agent: "testing"
+        comment: "Health check endpoint working correctly - returns API status and version"
+
+  - task: "User Registration API"
+    implemented: true
+    working: true
+    file: "backend/routes/auth.py"
+    stuck_count: 0
+    priority: "high"
+    needs_retesting: false
+    status_history:
+      - working: false
+        agent: "testing"
+        comment: "Initial test failed with PyObjectId validation error - TypeError in models.py"
+      - working: true
+        agent: "testing"
+        comment: "Fixed PyObjectId.validate() method signature to accept validation_info parameter. Registration now works correctly with JWT token generation and default preferences creation"
+
+  - task: "User Login API"
+    implemented: true
+    working: true
+    file: "backend/routes/auth.py"
+    stuck_count: 0
+    priority: "high"
+    needs_retesting: false
+    status_history:
+      - working: true
+        agent: "testing"
+        comment: "Login endpoint working correctly - validates credentials and returns JWT token with user data"
+
+  - task: "Get Current User API"
+    implemented: true
+    working: true
+    file: "backend/routes/auth.py"
+    stuck_count: 0
+    priority: "high"
+    needs_retesting: false
+    status_history:
+      - working: true
+        agent: "testing"
+        comment: "Protected endpoint working correctly - requires valid JWT token and returns user information"
+
+  - task: "Get User Preferences API"
+    implemented: true
+    working: true
+    file: "backend/routes/user.py"
+    stuck_count: 0
+    priority: "medium"
+    needs_retesting: false
+    status_history:
+      - working: true
+        agent: "testing"
+        comment: "Preferences endpoint working correctly - creates default preferences if not exist and returns all preference fields"
+
+  - task: "Update User Preferences API"
+    implemented: true
+    working: true
+    file: "backend/routes/user.py"
+    stuck_count: 0
+    priority: "medium"
+    needs_retesting: false
+    status_history:
+      - working: true
+        agent: "testing"
+        comment: "Preferences update working correctly - validates lock mode restrictions and updates preferences with proper validation"
+
+  - task: "Add Time Saved API"
+    implemented: true
+    working: true
+    file: "backend/routes/user.py"
+    stuck_count: 0
+    priority: "medium"
+    needs_retesting: false
+    status_history:
+      - working: true
+        agent: "testing"
+        comment: "Time tracking endpoint working correctly - updates user total time saved and creates session records"
+
+  - task: "Get User Stats API"
+    implemented: true
+    working: true
+    file: "backend/routes/user.py"
+    stuck_count: 0
+    priority: "medium"
+    needs_retesting: false
+    status_history:
+      - working: true
+        agent: "testing"
+        comment: "Statistics endpoint working correctly - returns time saved, session counts, and weekly stats"
+
+  - task: "JWT Authentication System"
+    implemented: true
+    working: true
+    file: "backend/auth.py"
+    stuck_count: 0
+    priority: "high"
+    needs_retesting: false
+    status_history:
+      - working: true
+        agent: "testing"
+        comment: "JWT authentication working correctly - properly rejects unauthorized requests (403 for no header, 401 for invalid token) and validates tokens for protected endpoints"
+
+  - task: "Error Handling and Validation"
+    implemented: true
+    working: true
+    file: "backend/routes/auth.py"
+    stuck_count: 0
+    priority: "medium"
+    needs_retesting: false
+    status_history:
+      - working: true
+        agent: "testing"
+        comment: "Error handling working correctly - returns appropriate error messages for invalid login credentials and maintains proper HTTP status codes"
+
+frontend:
+  # No frontend testing performed as per instructions
+
+metadata:
+  created_by: "testing_agent"
+  version: "1.0"
+  test_sequence: 1
+  run_ui: false
+
+test_plan:
+  current_focus:
+    - "All backend API endpoints tested and working"
+  stuck_tasks: []
+  test_all: false
+  test_priority: "high_first"
+
+agent_communication:
+  - agent: "testing"
+    message: "Completed comprehensive backend API testing for iCare application. All 10 test scenarios passed with 100% success rate. Fixed one critical issue with PyObjectId validation in models.py. All endpoints including health check, authentication, user preferences, time tracking, and error handling are working correctly. JWT authentication properly secures protected endpoints. MongoDB operations are persisting data correctly. Backend is ready for production use."
